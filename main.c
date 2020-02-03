@@ -1,7 +1,17 @@
 #include <stdio.h>
 
+void printlogo();
+void print_game_board();
+
 int main(){
- 
+    
+    printlogo();
+    print_game_board();
+    
+    return 0; 
+}
+
+void printlogo(){
     printf("\033[2J"); // clear terminal
     
     char logo_first_line[] = "\n  ______   ______   .__   __. .__   __.  _______   ______ .___________.    _______   ______    __    __  .______";
@@ -11,6 +21,8 @@ int main(){
     char logo_fourth_line[] = "\n|  |     |  |  |  | |  . `  | |  . `  | |   __|  |  |         |  |        |   __|  |  |  |  | |  |  |  | |      /        ";
     char logo_fifth_line[] = "\n|  `----.|  `--'  | |  |\\   | |  |\\   | |  |____ |  `----.    |  |        |  |     |  `--'  | |  `--'  | |  |\\  \\----.   ";
     char logo_sixth_line[] = "\n \\______| \\______/  |__| \\__| |__| \\__| |_______| \\______|    |__|        |__|      \\______/   \\______/  | _| `._____|   ";
+    char game_board_lines[] = "  | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ |\n";
+    char game_board_blanks[] = "  |       |       |       |       |       |       |       |\n";
     
     
     printf(logo_first_line);
@@ -20,11 +32,87 @@ int main(){
     printf(logo_fifth_line);
     printf(logo_sixth_line);
     
-    
-    printf("It is \033[31mnot\033[39m intelligent to use \033[32mhardcoded ANSI\033[39m codes!");
-    
-    getchar();
+    printf("\n\n\n\n\n\n");
     
     
-    return 0; 
 }
+
+void print_game_board(){
+     char game_board_lines[] = "  | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ |\n";
+     char game_board_blanks[] = "  |       |       |       |       |       |       |       |\n";
+    
+    printf("\e[1;33m");
+    
+    
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+       
+    //make board blue
+    printf("\e[1;33m");
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    printf(game_board_blanks);
+    printf(game_board_blanks);
+    printf(game_board_lines);
+    
+    //stop making the board blue
+    printf("\e[0m");
+    
+    printf("\n\n\n\n\n\n");
+ 
+    //stop making the board blue
+    printf("\e[0m");
+    
+    printf("\n\n\n\n\n\n");
+    
+}
+
