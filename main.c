@@ -1,12 +1,22 @@
 #include <stdio.h>
 
+
+/*
+ * This version of the program hardcodes the dimensions of the board as 6x7 because my C compiler requires the explicit dimenions of the array to be called out in the function. 
+ * 
+ */
+
 void printlogo();
 void print_game_board();
+void get_game_status(int game[6][7]);
 
 int main(){
+
+    int game_status[6][7]; 
     
     printlogo();
     print_game_board();
+    get_game_status(game_status);
     
     return 0; 
 }
@@ -41,37 +51,7 @@ void print_game_board(){
      char game_board_lines[] = "  | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ |\n";
      char game_board_blanks[] = "  |       |       |       |       |       |       |       |\n";
     
-    printf("\e[1;33m");
-    
-    
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
+
        
     //make board blue
     printf("\e[1;33m");
@@ -104,15 +84,27 @@ void print_game_board(){
     printf(game_board_blanks);
     printf(game_board_lines);
     
-    //stop making the board blue
-    printf("\e[0m");
-    
-    printf("\n\n\n\n\n\n");
  
     //stop making the board blue
     printf("\e[0m");
     
     printf("\n\n\n\n\n\n");
+    return;
     
 }
 
+void get_game_status(int game[][7]){
+    int i,j; 
+    
+    for ( i = 1; i < 6; i++ ) {
+      for ( j = 1; j < 7; j++ ) {
+            printf("%i ",game[i][j]);
+    }
+    
+    
+    printf("\n");
+    }
+    
+ return;   
+    
+}
