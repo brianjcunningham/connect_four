@@ -10,11 +10,11 @@
 
 
 #define EMPTY 0 
-#define BLACK 1
+#define BLUE 1
 #define RED 2
 
 void printlogo();
-void print_game_board();
+void print_game_board(int game[6][7]);
 void get_game_status(int game[6][7]);
 void reset_the_game(int game[6][7]);
 void place_a_chip(int game[6][7],int column, int color);
@@ -23,23 +23,41 @@ int determine_where_chip_falls(int game[6][7],int column);
 int main(){
 
     int game_status[6][7]; 
-    //int *address_of_game_status = *game_status;
+    // int *address_of_game_status = *game_status;
     
-    printlogo();
-    print_game_board();
-    get_game_status(game_status);
+    // printlogo();
+    print_game_board(game_status);
     reset_the_game(game_status);
-    get_game_status(game_status);
-    determine_where_chip_falls(game_status,0);
-    determine_where_chip_falls(game_status,6);
-    place_a_chip(game_status,1,RED);
-    place_a_chip(game_status,1,BLACK);
-    place_a_chip(game_status,1,RED);
-    determine_where_chip_falls(game_status,1);
-    determine_where_chip_falls(game_status,1);
-    determine_where_chip_falls(game_status,1);
-    get_game_status(game_status);
-    return 0; 
+    
+    print_game_board(game_status);
+//     get_game_status(game_status);
+//     reset_the_game(game_status);
+//     get_game_status(game_status);
+//     determine_where_chip_falls(game_status,0);
+//     determine_where_chip_falls(game_status,6);
+     place_a_chip(game_status,1,RED);
+     place_a_chip(game_status,1,BLUE);
+     place_a_chip(game_status,1,RED);
+     
+          place_a_chip(game_status,3,RED);
+     place_a_chip(game_status,0,BLUE);
+     place_a_chip(game_status,4,RED);
+     
+     
+          place_a_chip(game_status,6,RED);
+     place_a_chip(game_status,6,BLUE);
+     place_a_chip(game_status,6,RED);
+          place_a_chip(game_status,6,RED);
+     place_a_chip(game_status,6,BLUE);
+     place_a_chip(game_status,6,RED);
+     
+     print_game_board(game_status);
+
+     //     determine_where_chip_falls(game_status,1);
+//     determine_where_chip_falls(game_status,1);
+//     determine_where_chip_falls(game_status,1);
+//     get_game_status(game_status);
+//     return 0; 
 }
 
 void printlogo(){
@@ -68,51 +86,84 @@ void printlogo(){
     
 }
 
-void print_game_board(){
-     char game_board_lines[] = "  | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ |\n";
-     char game_board_blanks[] = "  |       |       |       |       |       |       |       |\n";
+void print_game_board(int game[][7]){
+    
+    int i,j; 
+    printf("\033[2J\n"); //clear terminal
+    
+    for ( i = 5; i >= 0; i-- ) {
+        printf("\e[1;33m|");
+      for ( j = 0; j <= 6; j++ ) {
+          switch (game[i][j]){
+              case 1: {
+                  printf("\e[1;34m X \e[1;33m");
+                  break;
+                }
+              case 2: {
+                    printf("\e[1;31m 0 \e[1;33m");
+                    break;
+                }
+            default: {
+                printf(" - ");
+                break;
+                  
+                }
+            }
+        }
+    printf("|\n\e[0m");
+            //printf(" has a byte size of %i ",sizeof(int));
+        }
+    
+    //printf("\n");
+    }
+    
+    
+    
+    
+//      char game_board_lines[] = "  | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ | _ _ _ |\n";
+//      char game_board_blanks[] = "  |       |       |       |       |       |       |       |\n";
+//     
+// 
+//        
+//     //make board blue
+//     printf("\e[1;33m");
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//     printf(game_board_blanks);
+//     printf(game_board_blanks);
+//     printf(game_board_lines);
+//     
+//  
+//     //stop making the board blue
+//     printf("\e[0m");
+//     
+//     printf("\n\n\n\n\n\n");
+//     return;
     
 
-       
-    //make board blue
-    printf("\e[1;33m");
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
-    printf(game_board_blanks);
-    printf(game_board_blanks);
-    printf(game_board_lines);
-    
- 
-    //stop making the board blue
-    printf("\e[0m");
-    
-    printf("\n\n\n\n\n\n");
-    return;
-    
-}
 
 void reset_the_game(int game[][7]){
     int i,j; 
@@ -120,7 +171,7 @@ void reset_the_game(int game[][7]){
     for ( i = 0; i <= 5; i++ ) {
       for ( j = 0; j <= 6; j++ ) {
             game[i][j] = 0;
-            printf("\n row %i, col %i has a value of %i ",i,j,game[i][j]);
+            //printf("\n row %i, col %i has a value of %i ",i,j,game[i][j]);
         }
     
     
@@ -161,7 +212,7 @@ int determine_where_chip_falls(int game[6][7],int column){
         }
         
     }
-    printf("\nThe first onoccupied row in column %i is row %i",column, running_sum);
+    //printf("\nThe first onoccupied row in column %i is row %i",column, running_sum);
     return running_sum;
     
     
