@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <limits.h>
 
 /*
  * This version of the program hardcodes the dimensions of the board as 6x7 because my C compiler requires the explicit dimenions of the array to be called out in the function. 
@@ -9,13 +9,17 @@
 void printlogo();
 void print_game_board();
 void get_game_status(int game[6][7]);
+void reset_the_game(int game[6][7]);
 
 int main(){
 
     int game_status[6][7]; 
+    //int *address_of_game_status = *game_status;
     
     printlogo();
     print_game_board();
+    get_game_status(game_status);
+    reset_the_game(game_status);
     get_game_status(game_status);
     
     return 0; 
@@ -93,13 +97,30 @@ void print_game_board(){
     
 }
 
+void reset_the_game(int game[][7]){
+    int i,j; 
+    
+    for ( i = 0; i <= 5; i++ ) {
+      for ( j = 0; j <= 6; j++ ) {
+            game[i][j] = 0;
+            printf("\n row %i, col %i has a value of %i ",i,j,game[i][j]);
+        }
+    
+    
+    printf("\n");
+    }
+    return;
+}
+
+
 void get_game_status(int game[][7]){
     int i,j; 
     
-    for ( i = 1; i < 6; i++ ) {
-      for ( j = 1; j < 7; j++ ) {
-            printf("%i ",game[i][j]);
-    }
+    for ( i = 0; i <= 5; i++ ) {
+      for ( j = 0; j <= 6; j++ ) {
+            printf("\n row %i, col %i has a value of %i ",i,j,game[i][j]);
+            //printf(" has a byte size of %i ",sizeof(int));
+        }
     
     
     printf("\n");
