@@ -4,12 +4,21 @@
 /*
  * This version of the program hardcodes the dimensions of the board as 6x7 because my C compiler requires the explicit dimenions of the array to be called out in the function. 
  * 
+ * 
+ * The bottom-left part of the board (from the user's perspective) is the 0,0 origin. 
  */
+
+
+#define EMPTY 0 
+#define BLACK 1
+#define RED 2
 
 void printlogo();
 void print_game_board();
 void get_game_status(int game[6][7]);
 void reset_the_game(int game[6][7]);
+void place_a_chip(int game[6][7],int column, int color);
+int determine_where_chip_falls(int game[6][7],int column);
 
 int main(){
 
@@ -21,7 +30,15 @@ int main(){
     get_game_status(game_status);
     reset_the_game(game_status);
     get_game_status(game_status);
-    
+    determine_where_chip_falls(game_status,0);
+    determine_where_chip_falls(game_status,6);
+    place_a_chip(game_status,1,RED);
+    place_a_chip(game_status,1,BLACK);
+    place_a_chip(game_status,1,RED);
+    determine_where_chip_falls(game_status,1);
+    determine_where_chip_falls(game_status,1);
+    determine_where_chip_falls(game_status,1);
+    get_game_status(game_status);
     return 0; 
 }
 
@@ -129,3 +146,30 @@ void get_game_status(int game[][7]){
  return;   
     
 }
+
+
+int determine_where_chip_falls(int game[6][7],int column){
+    int i,running_sum=0; 
+    
+    for ( i =0; i <=6; i++){
+        if (!game[i][column]){
+            break;
+        }
+        else {
+        running_sum++;
+            
+        }
+        
+    }
+    printf("\nThe first onoccupied row in column %i is row %i",column, running_sum);
+    return running_sum;
+    
+    
+}
+
+void place_a_chip(int game[6][7],int column, int color){
+        int row_placeholder = determine_where_chip_falls(game,column);
+        game[row_placeholder][column]=color;
+        printf("\n row %i, col %i has a value of %i ",row_placeholder,column,game[row_placeholder][column]);
+           }
+
