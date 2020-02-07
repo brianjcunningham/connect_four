@@ -23,48 +23,54 @@ int determine_where_chip_falls(int game[6][7],int column);
 int main(){
 
     int game_status[6][7]; 
-    // int *address_of_game_status = *game_status;
+    int blue_selection=8, red_selection;
     
     // printlogo();
-    print_game_board(game_status);
-    reset_the_game(game_status);
-    
-    print_game_board(game_status);
-//     get_game_status(game_status);
-//     reset_the_game(game_status);
-//     get_game_status(game_status);
-//     determine_where_chip_falls(game_status,0);
-//     determine_where_chip_falls(game_status,6);
-     place_a_chip(game_status,1,RED);
-     place_a_chip(game_status,1,BLUE);
-     place_a_chip(game_status,1,RED);
-     
-          place_a_chip(game_status,3,RED);
-     place_a_chip(game_status,0,BLUE);
-     place_a_chip(game_status,4,RED);
-     
-     
-          place_a_chip(game_status,6,RED);
-     place_a_chip(game_status,6,BLUE);
-     place_a_chip(game_status,6,RED);
-          place_a_chip(game_status,6,RED);
-     place_a_chip(game_status,6,BLUE);
-     place_a_chip(game_status,6,RED);
-     
-     print_game_board(game_status);
 
-     //     determine_where_chip_falls(game_status,1);
-//     determine_where_chip_falls(game_status,1);
-//     determine_where_chip_falls(game_status,1);
-//     get_game_status(game_status);
-//     return 0; 
+    reset_the_game(game_status);
+    print_game_board(game_status);
+    
+    
+    //2 player gameplay
+    
+   while (1){    // blue player turn
+        printf("Blue Player, please enter 0-6 to place a chip:");
+        
+       
+        while (blue_selection !='0' && blue_selection !='1' && blue_selection !='2' && blue_selection !='3' && blue_selection !='4' && blue_selection !='5' && blue_selection !='6'){
+            blue_selection = getchar();
+        }
+    
+    place_a_chip(game_status,blue_selection-'0',BLUE); // needs to be minus zero to convert ASCII number to an actual integer number
+    print_game_board(game_status);
+    blue_selection=8;
+        
+    print_game_board(game_status);
+    
+    //red player turn
+    printf("Red Player, please enter 0-6 to place a chip:");
+        
+       
+        while (red_selection !='0' && red_selection !='1' && red_selection !='2' && red_selection !='3' && red_selection !='4' && red_selection !='5' && red_selection !='6'){
+            red_selection = getchar();
+        }
+    
+    place_a_chip(game_status,red_selection-'0',RED); // needs to be minus zero to convert ASCII number to an actual integer number
+    print_game_board(game_status);
+    red_selection=8;
+        
+    print_game_board(game_status);
+    
+    
+    
+    
+   }
 }
 
 void printlogo(){
     printf("\033[2J"); // clear terminal
     
     char logo_first_line[] = "\n  ______   ______   .__   __. .__   __.  _______   ______ .___________.    _______   ______    __    __  .______";
-    
     char logo_second_line[] = "\n /      | /  __  \\  |  \\ |  | |  \\ |  | |   ____| /      ||           |   |   ____| /  __  \\  |  |  |  | |   _  \\        ";
     char logo_third_line[] = "\n|  ,----'|  |  |  | |   \\|  | |   \\|  | |  |__   |  ,----'`---|  |----`   |  |__   |  |  |  | |  |  |  | |  |_)  |       ";
     char logo_fourth_line[] = "\n|  |     |  |  |  | |  . `  | |  . `  | |   __|  |  |         |  |        |   __|  |  |  |  | |  |  |  | |      /        ";
